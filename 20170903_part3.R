@@ -1,3 +1,7 @@
+### written by Clement Liu ###
+## note on the data##
+# features are all normalized between 0 and 1. The distribution of all the features are similar across eras
+
 library(ggplot2)
 library(caret)
 library(doSNOW)
