@@ -37,16 +37,7 @@ train_tour_prob = predict(rf, train[,f_names_orig],type = 'prob')[,2] # probabli
 train$tour_prob = train_tour_prob
 train_in_train = train[train_predict == "X0",] # data in train set and classified into training set correctly
 
-lower_quantile = function(table, percent=0.1){
-    quantile(table$tour_prob, c(percent))
-}
-train_in_train_split = split(train_in_train, train_in_train$era)
-sapply(train_in_train_split, lower_quantile)
-
-
 quantile(train_in_train$tour_prob, c(0.1,0.05))
-
-
 
 ggplot(train_in_train,
        aes(x = tour_prob, fill = target)) +
