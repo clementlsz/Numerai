@@ -39,10 +39,10 @@ train_in_train = train[train_predict == "X0",] # data in train set and classifie
 
 quantile(train_in_train$tour_prob, c(0.1,0.05))
 
+# check the distribution of the tour_prob in the original training set (train) and train_in_train set
 ggplot(train_in_train,
        aes(x = tour_prob, fill = target)) +
     geom_histogram(binwidth = 0.01)
-
 ggplot(train,
        aes(x = tour_prob, fill = target)) +
     geom_histogram(binwidth = 0.01)
@@ -57,7 +57,9 @@ ggplot(train_remove,
     geom_histogram(binwidth = 0.01) # graph the distribution of the removed data
 table(train_remove$era)
 table(train$era)
-table(train_remove$era) / table(train$era)
+table(train_remove$era) / table(train$era) 
+# so the removed data is evenly (roughly) distributed across eras
+
 # create a new training data set
 train_adj = train[!train$id %in% train_remove$id,]
 remove(train_in_train)
